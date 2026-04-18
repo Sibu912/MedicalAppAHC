@@ -1,14 +1,52 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Heart, Calendar, Pill, Users, Clock, Shield } from "lucide-react"
+import { Heart, Calendar, Pill, Users, Clock, Shield, Globe } from "lucide-react"
 import Image from "next/image"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+const southAfricanLanguages = [
+  { code: "en", name: "English" },
+  { code: "af", name: "Afrikaans" },
+  { code: "zu", name: "isiZulu" },
+  { code: "xh", name: "isiXhosa" },
+  { code: "st", name: "Sesotho" },
+  { code: "nso", name: "Sepedi" },
+  { code: "tn", name: "Setswana" },
+  { code: "ts", name: "Xitsonga" },
+  { code: "ss", name: "siSwati" },
+  { code: "ve", name: "Tshivenda" },
+  { code: "nr", name: "isiNdebele" },
+]
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        {/* Language Dropdown - Top Right */}
+        <div className="absolute top-4 right-4 z-10">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="gap-2">
+                <Globe className="h-4 w-4" />
+                Languages
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              {southAfricanLanguages.map((language) => (
+                <DropdownMenuItem key={language.code} className="cursor-pointer">
+                  {language.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
         <div className="container mx-auto px-4 py-20 md:py-32">
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
             <div className="text-center lg:text-left">
